@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supercar Wheel Assembly Line</title>
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: #111;
+    }
+
+    .info-panel {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.72);
+      color: white;
+      padding: 12px 14px;
+      border-radius: 10px;
+      max-width: 320px;
+      font-size: 14px;
+      line-height: 1.35;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .info-panel b {
+      color: #ffd54f;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="info-panel">
+  <b>Supercar Wheel Assembly Line</b><br>
+  M01 → M02 → M03 → Finished Wheel<br>
+  Mouse: look around<br>
+  W/A/S/D: move
+</div>
+
+<a-scene background="color: #9aa3ad">
+
+  <!-- =========================================================
+       LIGHTING
+       ========================================================= -->
+  <a-entity light="type: ambient; intensity: 0.65; color: #ffffff"></a-entity>
+  <a-entity light="type: directional; intensity: 0.9; color: #ffffff"
+            position="2 8 4" rotation="-55 20 0"></a-entity>
+
+  <!-- =========================================================
+       FACTORY FLOOR
+       ========================================================= -->
+  <a-box position="0 -0.05 0"
+         width="20"
+         height="0.1"
+         depth="12"
+         color="#35393f">
+  </a-box>
+
+  <!-- 1 meter grid lines -->
+  <a-entity id="grid">
+    <!-- vertical grid lines -->
+    <a-box position="-9.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="-8.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="-7.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="-6.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="-5.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="-4.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="-3.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="-2.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="-1.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="-0.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="0.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="1.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="2.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="3.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="4.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="5.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="6.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="7.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="8.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+    <a-box position="9.5 0.01 0" width="0.02" height="0.02" depth="12" color="#5f666f"></a-box>
+
+    <!-- horizontal grid lines -->
+    <a-box position="0 0.01 -5.5" width="20" height="0.02" depth="0.02" color="#5f666f"></a-box>
+    <a-box position="0 0.01 -4.5" width="20" height="0.02" depth="0.02" color="#5f666f"></a-box>
+    <a-box position="0 0.01 -3.5" width="20" height="0.02" depth="0.02" color="#5f666f"></a-box>
+    <a-box position="0 0.01 -2.5" width="20" height="0.02" depth="0.02" color="#5f666f"></a-box>
+    <a-box position="0 0.01 -1.5" width="20" height="0.02" depth="0.02" color="#5f666f"></a-box>
+    <a-box position="0 0.01 -0.5" width="20" height="0.02" depth="0.02" color="#5f666f"></a-box>
+    <a-box position="0 0.01 0.5" width="20" height="0.02" depth="0.02" color="#5f666f"></a-box>
+    <a-box position="0 0.01 1.5" width="20" height="0.02" depth="0.02" color="#5f666f"></a-box>
+    <a-box position="0 0.01 2.5" width="20" height="0.02" depth="0.02" color="#5f666f"></a-box>
+    <a-box position="0 0.01 3.5" width="20" height="0.02" depth="0.02" color="#5f666f"></a-box>
+    <a-box position="0 0.01 4.5" width="20" height="0.02" depth="0.02" color="#5f666f"></a-box>
+    <a-box position="0 0.01 5.5" width="20" height="0.02" depth="0.02" color="#5f666f"></a-box>
+  </a-entity>
+
+  <!-- =========================================================
+       WALLS
+       ========================================================= -->
+  <a-box position="0 3 -5.8"
+         width="20"
+         height="6"
+         depth="0.25"
+         color="#657483">
+  </a-box>
+
+  <a-box position="-9.8 3 0"
+         width="0.25"
+         height="6"
+         depth="12"
+         color="#596875">
+  </a-box>
+
+  <a-box position="9.8 3 0"
+         width="0.25"
+         height="6"
+         depth="12"
+         color="#596875">
+  </a-box>
+
+  <!-- =========================================================
+       CEILING LIGHTS
+       ========================================================= -->
+  <a-box position="-5 5.5 -1" width="2.2" height="0.15" depth="0.5"
+         color="#ffffff" material="emissive: #ffffff; emissiveIntensity: 0.9"></a-box>
+
+  <a-box position="0 5.5 -1" width="2.2" height="0.15" depth="0.5"
+         color="#ffffff" material="emissive: #ffffff; emissiveIntensity: 0.9"></a-box>
+
+  <a-box position="5 5.5 -1" width="2.2" height="0.15" depth="0.5"
+         color="#ffffff" material="emissive: #ffffff; emissiveIntensity: 0.9"></a-box>
+
+  <!-- =========================================================
+       FACTORY TITLE
+       ========================================================= -->
+  <a-text value="SUPERCAR WHEEL ASSEMBLY LINE"
+          align="center"
+          color="#ffffff"
+          width="10"
+          position="0 4.3 -5.62">
+  </a-text>
+
+  <!-- =========================================================
+       OPERATOR WALKING PATH
+       ========================================================= -->
+  <a-box position="0 0.025 3.8"
+         width="18"
+         height="0.03"
+         depth="1.3"
+         color="#d7a800"
+         opacity="0.72">
+  </a-box>
+
+  <a-text value="OPERATOR WALKING PATH"
+          align="center"
+          color="#fff16b"
+          width="6"
+          rotation="-90 0 0"
+          position="0 0.06 3.8">
+  </a-text>
+
+  <!-- =========================================================
+       SAFETY ZONES
+       ========================================================= -->
+  <a-box position="-5 0.02 0"
+         width="3.7" height="0.025" depth="3.7"
+         color="#d6a600"
+         opacity="0.35">
+  </a-box>
+
+  <a-box position="0 0.02 0"
+         width="3.7" height="0.025" depth="3.7"
+         color="#d6a600"
+         opacity="0.35">
+  </a-box>
+
+  <a-box position="5 0.02 0"
+         width="3.7" height="0.025" depth="3.7"
+         color="#d6a600"
+         opacity="0.35">
+  </a-box>
+
+  <!-- =========================================================
+       INPUT CONVEYOR
+       ========================================================= -->
+  <a-box position="-8 0.65 0"
+         width="2.7"
+         height="0.18"
+         depth="1"
+         color="#6f767d">
+  </a-box>
+
+  <!-- conveyor rollers -->
+  <a-cylinder position="-8.9 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+  <a-cylinder position="-8.5 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+  <a-cylinder position="-8.1 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+  <a-cylinder position="-7.7 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+  <a-cylinder position="-7.3 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+
+  <!-- input alloy wheel -->
+  <a-entity position="-8.2 1.05 0">
+    <a-cylinder radius="0.42"
+                height="0.24"
+                rotation="90 0 0"
+                color="#b8bdc4">
+    </a-cylinder>
+    <a-cylinder radius="0.22"
+                height="0.28"
+                rotation="90 0 0"
+                color="#35393e">
+    </a-cylinder>
+  </a-entity>
+
+  <!-- =========================================================
+       M01 - ALLOY WHEEL INSPECTION
+       ========================================================= -->
+  <a-entity id="M01" position="-5 0 0">
+    <!-- machine body -->
+    <a-box position="0 1.5 0" width="3" height="3" depth="2.6" color="#24282d"></a-box>
+
+    <!-- machine opening -->
+    <a-box position="0 1.45 1.31" width="1.9" height="1.8" depth="0.12" color="#101214"></a-box>
+
+    <!-- lower platform -->
+    <a-box position="0 0.65 0.85" width="1.8" height="0.35" depth="1.2" color="#555c63"></a-box>
+
+    <!-- wheel on platform -->
+    <a-cylinder position="0 0.95 0.85" radius="0.45" height="0.24" rotation="90 0 0" color="#aeb4bb"></a-cylinder>
+    <a-cylinder position="0 0.95 0.85" radius="0.22" height="0.28" rotation="90 0 0" color="#303439"></a-cylinder>
+
+    <!-- robot arm -->
+    <a-sphere position="-0.65 2.1 0.75" radius="0.18" color="#c9ced4"></a-sphere>
+    <a-cylinder position="-0.3 1.9 0.78" radius="0.12" height="0.9" rotation="0 0 -45" color="#aab0b6"></a-cylinder>
+    <a-sphere position="0 1.6 0.8" radius="0.15" color="#c9ced4"></a-sphere>
+    <a-cylinder position="0.25 1.35 0.82" radius="0.10" height="0.7" rotation="0 0 -35" color="#aab0b6"></a-cylinder>
+
+    <!-- inspection sensor -->
+    <a-sphere position="0.45 1.12 0.84" radius="0.12" color="#61d7ff"></a-sphere>
+
+    <!-- label -->
+    <a-text value="M01  ALLOY WHEEL INSPECTION"
+            align="center" color="#ffffff" width="4"
+            position="0 2.65 1.38">
+    </a-text>
+  </a-entity>
+
+  <!-- =========================================================
+       CONVEYOR M01 -> M02
+       ========================================================= -->
+  <a-box position="-2.5 0.65 0" width="2" height="0.18" depth="1" color="#6f767d"></a-box>
+  <a-cylinder position="-3.2 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+  <a-cylinder position="-2.8 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+  <a-cylinder position="-2.4 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+  <a-cylinder position="-2.0 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+
+  <!-- =========================================================
+       M02 - TIRE MOUNTING & INFLATION
+       ========================================================= -->
+  <a-entity id="M02" position="0 0 0">
+    <a-box position="0 1.5 0" width="3" height="3" depth="2.6" color="#262a2f"></a-box>
+    <a-box position="0 1.45 1.31" width="1.9" height="1.8" depth="0.12" color="#101214"></a-box>
+    <a-box position="0 0.65 0.85" width="1.8" height="0.35" depth="1.2" color="#555c63"></a-box>
+
+    <!-- tire + rim -->
+    <a-cylinder position="0 0.95 0.85" radius="0.52" height="0.28" rotation="90 0 0" color="#111214"></a-cylinder>
+    <a-cylinder position="0 0.95 0.85" radius="0.33" height="0.31" rotation="90 0 0" color="#b9bec4"></a-cylinder>
+    <a-cylinder position="0 0.95 0.85" radius="0.15" height="0.34" rotation="90 0 0" color="#34383d"></a-cylinder>
+
+    <!-- mounting arm -->
+    <a-sphere position="-0.55 2.1 0.75" radius="0.18" color="#c9ced4"></a-sphere>
+    <a-cylinder position="-0.25 1.85 0.8" radius="0.12" height="0.85" rotation="0 0 -40" color="#aab0b6"></a-cylinder>
+    <a-sphere position="0.03 1.55 0.82" radius="0.15" color="#c9ced4"></a-sphere>
+    <a-cylinder position="0.1 1.25 0.84" radius="0.1" height="0.55" color="#9ba1a7"></a-cylinder>
+
+    <!-- inflation nozzle -->
+    <a-cylinder position="0.45 1.45 0.84" radius="0.06" height="0.8" rotation="0 0 0" color="#6ed8ff"></a-cylinder>
+
+    <a-text value="M02  TIRE MOUNTING & INFLATION"
+            align="center" color="#ffffff" width="4"
+            position="0 2.65 1.38">
+    </a-text>
+  </a-entity>
+
+  <!-- =========================================================
+       CONVEYOR M02 -> M03
+       ========================================================= -->
+  <a-box position="2.5 0.65 0" width="2" height="0.18" depth="1" color="#6f767d"></a-box>
+  <a-cylinder position="1.8 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+  <a-cylinder position="2.2 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+  <a-cylinder position="2.6 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+  <a-cylinder position="3.0 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+
+  <!-- =========================================================
+       M03 - BALANCING & FINAL CHECK
+       ========================================================= -->
+  <a-entity id="M03" position="5 0 0">
+    <a-box position="0 1.5 0" width="3" height="3" depth="2.6" color="#23272c"></a-box>
+    <a-box position="0 1.45 1.31" width="1.9" height="1.8" depth="0.12" color="#101214"></a-box>
+    <a-box position="0 0.65 0.85" width="1.8" height="0.35" depth="1.2" color="#555c63"></a-box>
+
+    <!-- balancing table -->
+    <a-cylinder position="0 0.88 0.85" radius="0.65" height="0.2" color="#666d74"></a-cylinder>
+
+    <!-- finished mounted wheel in tester -->
+    <a-cylinder position="0 1.05 0.85" radius="0.52" height="0.28" rotation="90 0 0" color="#111214"></a-cylinder>
+    <a-cylinder position="0 1.05 0.85" radius="0.33" height="0.31" rotation="90 0 0" color="#b9bec4"></a-cylinder>
+    <a-cylinder position="0 1.05 0.85" radius="0.15" height="0.34" rotation="90 0 0" color="#34383d"></a-cylinder>
+
+    <!-- balancing sensor/tool -->
+    <a-cylinder position="0 1.75 0.82" radius="0.10" height="1.1" color="#adb3b9"></a-cylinder>
+    <a-sphere position="0 1.2 0.82" radius="0.14" color="#64d8ff"></a-sphere>
+
+    <a-text value="M03  WHEEL BALANCING & FINAL CHECK"
+            align="center" color="#ffffff" width="4"
+            position="0 2.65 1.38">
+    </a-text>
+  </a-entity>
+
+  <!-- =========================================================
+       OUTFEED CONVEYOR
+       ========================================================= -->
+  <a-box position="8 0.65 0" width="2.7" height="0.18" depth="1" color="#6f767d"></a-box>
+
+  <a-cylinder position="7.2 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+  <a-cylinder position="7.6 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+  <a-cylinder position="8.0 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+  <a-cylinder position="8.4 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+  <a-cylinder position="8.8 0.78 0" radius="0.07" height="0.9" rotation="90 0 0" color="#b0b4b8"></a-cylinder>
+
+  <!-- completed supercar wheel -->
+  <a-entity position="8.2 1.1 0">
+    <a-cylinder radius="0.55"
+                height="0.3"
+                rotation="90 0 0"
+                color="#101113">
+    </a-cylinder>
+
+    <a-cylinder radius="0.34"
+                height="0.34"
+                rotation="90 0 0"
+                color="#9299a0">
+    </a-cylinder>
+
+    <a-cylinder radius="0.15"
+                height="0.36"
+                rotation="90 0 0"
+                color="#202328">
+    </a-cylinder>
+
+    <!-- red brake center detail -->
+    <a-box position="0.23 0 0.18"
+           width="0.10"
+           height="0.35"
+           depth="0.08"
+           color="#d32f2f">
+    </a-box>
+  </a-entity>
+
+  <a-text value="FINISHED SUPERCAR WHEEL"
+          align="center"
+          color="#8cff92"
+          width="3.5"
+          position="8.0 2.1 -0.1">
+  </a-text>
+
+  <!-- =========================================================
+       FLOW ARROWS
+       ========================================================= -->
+  <a-text value=">"
+          color="#ffd42a"
+          width="2"
+          position="-2.5 1.15 1.0">
+  </a-text>
+
+  <a-text value=">"
+          color="#ffd42a"
+          width="2"
+          position="2.5 1.15 1.0">
+  </a-text>
+
+  <a-text value=">"
+          color="#ffd42a"
+          width="2"
+          position="7.1 1.15 1.0">
+  </a-text>
+
+  <!-- =========================================================
+       CAMERA
+       ========================================================= -->
+  <a-entity position="0 4.6 10.5">
+    <a-camera
+      wasd-controls="acceleration: 20"
+      look-controls
+      rotation="-12 0 0">
+    </a-camera>
+  </a-entity>
+
+</a-scene>
+
+</body>
+</html>
